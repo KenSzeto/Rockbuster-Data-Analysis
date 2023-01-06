@@ -1,0 +1,41 @@
+#Checking for Duplicates
+
+SELECT title, release_year, language_id, rental_duration, COUNT(*)
+FROM film
+GROUP BY title, release_year, language_id, rental_duration
+HAVING COUNT(*) >1;
+
+# Checking uniformity
+
+SELECT rating
+FROM film
+GROUP BY DISTINCT rating
+
+# Data Profiling
+
+MIN(film_id) AS min_film_id,
+MAX(film_id) AS max_film_id,
+-- AVG film ID excluded because it doesn't make sense to track
+MIN(release_year)AS min_release,
+MAX(release_year) AS max_release,
+AVG(release_year) AS avg_release,
+MIN(language_id) AS min_language_id,
+MAX(language_id) AS max_language_id,
+MODE()WITHIN GROUP (ORDER BY language_id)AS mode_language_id,
+-- AVG replaced with mode because an language ID is a discrete value
+MIN(rental_duration) AS min_duration,
+MAX(rental_duration) AS max_duration,
+AVG(rental_duration) AS avg_duration,
+MIN(rental_rate) AS min_rate,
+MAX(rental_rate) AS max_rate,
+AVG(rental_rate) AS avg_rate,
+MIN(length) AS min_length,
+MAX(length) AS max_length,
+AVG(length) AS avg_length,
+MIN(replacement_cost) AS min_replacement,
+MAX(replacement_cost) AS max_replacement,
+AVG(replacement_cost) AS avg_replacement,
+MODE() WITHIN GROUP (ORDER BY rating) AS mode_rating,
+MODE() WITHIN GROUP (ORDER BY special_features) AS mode_features
+--Full text mode skipped because it is unstructured text data, with a mode unlikely to help analysis
+FROM film;
