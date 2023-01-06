@@ -1,0 +1,34 @@
+# Filtering Data in Rockbuster Database
+
+# Filter for movies that include Uptown in the title.
+
+SELECT film_id, title, description
+FROM film
+WHERE title
+LIKE '%Uptown%'
+
+# Filter for movies longer than 120 minutes and cost more than $2.99 to replace.
+
+"SELECT film_id, title, description
+FROM film
+WHERE length>120
+AND rental_rate>2.99"
+
+# Filter for films rented for between 4 and 6 days.
+
+SELECT film_id, title, description
+FROM film
+WHERE rental_duration
+BETWEEN 4 AND 6
+
+# Filter for movies that cost less than $15 to replace.
+
+SELECT film_id, title, description
+FROM film
+WHERE replacement_cost<14.99
+
+# Filter for films suitable for Children.
+
+SELECT film_id, title, description
+FROM film
+WHERE rating='G' or rating='PG'
