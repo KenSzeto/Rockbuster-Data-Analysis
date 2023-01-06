@@ -1,2 +1,2 @@
-# SQLRepository
-A collection of SQL Queries I've Created during past projects
+# Rockbuster Analysis Project
+A showcase of the work I completed for the fictional Rockbuster Film LLC.
